@@ -7,16 +7,63 @@ export const metadata: Metadata = {
   description: "A look at plated dishes, meal-prep spreads, and kitchen moments from Chef Tristan.",
 };
 
-const GALLERY_ITEMS: { label: string; tone: ImageTone; icon: string; span?: string }[] = [
-  { label: "Seared salmon with brown butter glaze", tone: "terracotta", icon: "🐟", span: "sm:row-span-2" },
-  { label: "Sunday short ribs over polenta", tone: "walnut", icon: "🍖" },
-  { label: "Heirloom tomato and burrata salad", tone: "sage", icon: "🍅" },
-  { label: "Weekly meal-prep containers", tone: "cream-dark", icon: "🥡" },
-  { label: "Wild mushroom risotto, table-side", tone: "walnut", icon: "🍄", span: "sm:row-span-2" },
-  { label: "Charred corn tacos, fresh off the pan", tone: "sage", icon: "🌽" },
-  { label: "Dinner party plating in progress", tone: "terracotta", icon: "🍽" },
-  { label: "Herb-crusted chicken, resting", tone: "cream-dark", icon: "🌿" },
-  { label: "Kitchen prep, mise en place", tone: "walnut", icon: "🔪" },
+const GALLERY_ITEMS: { label: string; tone: ImageTone; icon: string; imageSrc: string; span?: string }[] = [
+  {
+    label: "Seared salmon with brown butter glaze",
+    tone: "terracotta",
+    icon: "🐟",
+    imageSrc: "/images/food/gallery-1.jpg",
+    span: "sm:row-span-2",
+  },
+  {
+    label: "Sunday short ribs over polenta",
+    tone: "walnut",
+    icon: "🍖",
+    imageSrc: "/images/food/gallery-2.jpg",
+  },
+  {
+    label: "Heirloom tomato and burrata salad",
+    tone: "sage",
+    icon: "🍅",
+    imageSrc: "/images/food/gallery-3.jpg",
+  },
+  {
+    label: "Weekly meal-prep containers",
+    tone: "cream-dark",
+    icon: "🥡",
+    imageSrc: "/images/food/gallery-4.jpg",
+  },
+  {
+    label: "Wild mushroom risotto, table-side",
+    tone: "walnut",
+    icon: "🍄",
+    imageSrc: "/images/food/gallery-5.jpg",
+    span: "sm:row-span-2",
+  },
+  {
+    label: "Charred corn tacos, fresh off the pan",
+    tone: "sage",
+    icon: "🌽",
+    imageSrc: "/images/food/gallery-6.jpg",
+  },
+  {
+    label: "Dinner party plating in progress",
+    tone: "terracotta",
+    icon: "🍽",
+    imageSrc: "/images/food/gallery-7.jpg",
+  },
+  {
+    label: "Herb-crusted chicken, resting",
+    tone: "cream-dark",
+    icon: "🌿",
+    imageSrc: "/images/food/gallery-8.jpg",
+  },
+  {
+    label: "Kitchen prep, mise en place",
+    tone: "walnut",
+    icon: "🔪",
+    imageSrc: "/images/food/gallery-9.jpg",
+  },
 ];
 
 export default function GalleryPage() {
@@ -40,6 +87,7 @@ export default function GalleryPage() {
             tone={item.tone}
             label={item.label}
             icon={item.icon}
+            src={item.imageSrc}
             className={`h-full w-full rounded-2xl ${item.span ?? ""}`}
           />
         ))}

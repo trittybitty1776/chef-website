@@ -45,8 +45,9 @@ export default function AboutPage() {
           </div>
           <PlaceholderImage
             tone="walnut"
-            label="Chef Tristan in the kitchen"
+            label="A dish from Chef Tristan's kitchen"
             icon="🔪"
+            src="/images/food/hero-chef.jpg"
             className="aspect-[4/3] w-full rounded-3xl shadow-lg"
           />
         </div>

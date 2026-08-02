@@ -70,6 +70,7 @@ export default async function RecipeDetailPage({
       <PlaceholderImage
         tone={recipe.imageTone}
         label={recipe.title}
+        src={recipe.imageSrc}
         className="mt-8 aspect-[16/9] w-full rounded-3xl shadow-lg"
       />
 

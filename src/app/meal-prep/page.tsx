@@ -99,6 +99,7 @@ export default function MealPrepPage() {
             tone="sage"
             label="Weekly meal-prep containers ready in the fridge"
             icon="🥘"
+            src="/images/food/meal-prep-containers.jpg"
             className="aspect-[4/3] w-full rounded-3xl shadow-lg"
           />
         </div>

@@ -23,6 +23,7 @@ export type Recipe = {
   cookTimeMinutes: number;
   servings: number;
   imageTone: ImageTone;
+  imageSrc: string;
   ingredients: string[];
   steps: string[];
 };
@@ -45,6 +46,7 @@ export const DIETARY_TAGS: DietaryTag[] = [
 export const RECIPES: Recipe[] = [
   {
     slug: "brown-butter-miso-salmon",
+    imageSrc: "/images/food/brown-butter-miso-salmon.jpg",
     title: "Brown Butter Miso Salmon",
     description:
       "Crispy-skinned salmon glazed with brown butter and white miso, finished with charred scallions.",
@@ -74,6 +76,7 @@ export const RECIPES: Recipe[] = [
   },
   {
     slug: "sunday-braised-short-ribs",
+    imageSrc: "/images/food/sunday-braised-short-ribs.jpg",
     title: "Sunday Braised Short Ribs",
     description:
       "Red wine braised short ribs, fall-apart tender, served over creamy polenta.",
@@ -105,6 +108,7 @@ export const RECIPES: Recipe[] = [
   },
   {
     slug: "charred-corn-black-bean-tacos",
+    imageSrc: "/images/food/charred-corn-black-bean-tacos.jpg",
     title: "Charred Corn & Black Bean Tacos",
     description:
       "Smoky charred corn, black beans, and lime crema piled onto warm tortillas.",
@@ -133,6 +137,7 @@ export const RECIPES: Recipe[] = [
   },
   {
     slug: "walnut-herb-crusted-chicken",
+    imageSrc: "/images/food/walnut-herb-crusted-chicken.jpg",
     title: "Walnut Herb-Crusted Chicken",
     description:
       "Pan-roasted chicken breast under a crisp walnut and herb crust, pan sauce drizzled on top.",
@@ -161,6 +166,7 @@ export const RECIPES: Recipe[] = [
   },
   {
     slug: "creamy-mushroom-risotto",
+    imageSrc: "/images/food/creamy-mushroom-risotto.jpg",
     title: "Creamy Wild Mushroom Risotto",
     description:
       "Slow-stirred arborio rice with a trio of wild mushrooms and shaved parmesan.",
@@ -190,6 +196,7 @@ export const RECIPES: Recipe[] = [
   },
   {
     slug: "heirloom-tomato-burrata-salad",
+    imageSrc: "/images/food/heirloom-tomato-burrata-salad.jpg",
     title: "Heirloom Tomato & Burrata Salad",
     description:
       "Peak-season heirloom tomatoes with creamy burrata, basil oil, and aged balsamic.",
@@ -216,6 +223,7 @@ export const RECIPES: Recipe[] = [
   },
   {
     slug: "one-pan-lemon-herb-chicken-thighs",
+    imageSrc: "/images/food/one-pan-lemon-herb-chicken-thighs.jpg",
     title: "One-Pan Lemon Herb Chicken Thighs",
     description:
       "Crispy-skinned chicken thighs roasted with lemon, garlic, and baby potatoes — one pan, no fuss.",
@@ -242,6 +250,7 @@ export const RECIPES: Recipe[] = [
   },
   {
     slug: "vegan-coconut-red-lentil-curry",
+    imageSrc: "/images/food/vegan-coconut-red-lentil-curry.jpg",
     title: "Vegan Coconut Red Lentil Curry",
     description:
       "Warming red lentil curry simmered in coconut milk with ginger, turmeric, and fresh cilantro.",
@@ -271,6 +280,7 @@ export const RECIPES: Recipe[] = [
   },
   {
     slug: "classic-shepherds-pie",
+    imageSrc: "/images/food/classic-shepherds-pie.jpg",
     title: "Classic Shepherd's Pie",
     description:
       "Rich braised lamb and root vegetables under a golden, buttery mashed potato crust.",

@@ -15,6 +15,7 @@ export default function RecipeCard({ recipe }: Props) {
       <PlaceholderImage
         tone={recipe.imageTone}
         label={recipe.title}
+        src={recipe.imageSrc}
         className="aspect-[4/3] w-full transition-transform duration-300 group-hover:scale-[1.03]"
       />
       <div className="flex flex-1 flex-col gap-3 p-5">

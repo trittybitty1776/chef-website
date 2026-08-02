@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ImageTone } from "@/lib/recipes";
 
 const TONE_GRADIENTS: Record<ImageTone, string> = {
@@ -19,9 +20,21 @@ type Props = {
   label: string;
   icon?: string;
   className?: string;
+  src?: string;
 };
 
-export default function PlaceholderImage({ tone, label, icon = "🍽", className = "" }: Props) {
+export default function PlaceholderImage({ tone, label, icon = "🍽", className = "", src }: Props) {
+  if (src) {
+    return (
+      <div className={`relative overflow-hidden ${className}`}>
+        <Image src={src} alt={label} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+        <span className="absolute bottom-2 right-3 rounded-full bg-walnut/60 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-cream/90">
+          stock placeholder
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div
       role="img"

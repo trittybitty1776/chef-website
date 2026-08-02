@@ -41,8 +41,9 @@ export default function Home() {
           </div>
           <PlaceholderImage
             tone="terracotta"
-            label="Chef Tristan plating a dish"
+            label="A dish plated by Chef Tristan"
             icon="👨‍🍳"
+            src="/images/food/hero-chef.jpg"
             className="aspect-[4/3] w-full rounded-3xl shadow-lg lg:aspect-square"
           />
         </div>
@@ -110,6 +111,7 @@ export default function Home() {
             tone="cream-dark"
             label="Packed weekly meal-prep containers"
             icon="🥡"
+            src="/images/food/meal-prep-containers.jpg"
             className="aspect-[4/3] w-full rounded-3xl"
           />
         </div>
