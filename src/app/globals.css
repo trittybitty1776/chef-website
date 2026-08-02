@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Warm rustic kitchen-table palette */
+  --color-cream: #faf3e8;
+  --color-cream-dark: #f2e6d3;
+  --color-terracotta: #c1552f;
+  --color-terracotta-dark: #a1431f;
+  --color-terracotta-light: #e08b62;
+  --color-sage: #7c8a5f;
+  --color-sage-dark: #5f6c47;
+  --color-sage-light: #a6b389;
+  --color-walnut: #3d2b21;
+  --color-walnut-light: #6b5644;
+  --color-butcher: #efe2c8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-cream: var(--color-cream);
+  --color-cream-dark: var(--color-cream-dark);
+  --color-terracotta: var(--color-terracotta);
+  --color-terracotta-dark: var(--color-terracotta-dark);
+  --color-terracotta-light: var(--color-terracotta-light);
+  --color-sage: var(--color-sage);
+  --color-sage-dark: var(--color-sage-dark);
+  --color-sage-light: var(--color-sage-light);
+  --color-walnut: var(--color-walnut);
+  --color-walnut-light: var(--color-walnut-light);
+  --color-butcher: var(--color-butcher);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+  --font-script: var(--font-caveat);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-walnut);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+/* Subtle linen texture for section backgrounds */
+.bg-linen {
+  background-color: var(--color-cream);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(61, 43, 33, 0.03) 0px, rgba(61, 43, 33, 0.03) 1px, transparent 1px, transparent 3px),
+    repeating-linear-gradient(90deg, rgba(61, 43, 33, 0.03) 0px, rgba(61, 43, 33, 0.03) 1px, transparent 1px, transparent 3px);
 }
