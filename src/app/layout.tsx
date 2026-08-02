@@ -24,7 +24,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://trittybitty1776.github.io/chef-website"),
   title: {
     default: "Chef Tristan | Personal Chef & Meal Prep",
     template: "%s | Chef Tristan",

@@ -1,7 +1,9 @@
 import type { MetadataRoute } from "next";
 import { RECIPES } from "@/lib/recipes";
 
-const BASE_URL = "https://example.com";
+export const dynamic = "force-static";
+
+const BASE_URL = "https://trittybitty1776.github.io/chef-website";
 
 const STATIC_ROUTES = [
   "",
