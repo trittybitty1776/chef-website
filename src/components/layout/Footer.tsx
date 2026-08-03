@@ -75,10 +75,10 @@ export default function Footer() {
               </a>
             ))}
             <a
-              href="mailto:hello@cheftristan.com"
+              href="mailto:hello@chefjarvis.com"
               className="text-[0.7rem] uppercase tracking-[0.18em] text-bone/50 transition-colors hover:text-brass-light"
             >
-              hello@cheftristan.com
+              hello@chefjarvis.com
             </a>
           </div>
         </div>

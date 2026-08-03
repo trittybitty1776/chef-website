@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const SOCIAL_LINKS = [
-  { label: "Instagram", handle: "@cheftristan", href: "https://instagram.com" },
+  { label: "Instagram", handle: "@chefjarvis", href: "https://instagram.com" },
   { label: "Facebook", handle: "Chef Jarvis", href: "https://facebook.com" },
   { label: "Pinterest", handle: "Chef Jarvis", href: "https://pinterest.com" },
 ];
@@ -32,10 +32,10 @@ export default function ContactPage() {
           <div>
             <p className="eyebrow text-[0.62rem] text-stone-light">Direct</p>
             <a
-              href="mailto:hello@cheftristan.com"
+              href="mailto:hello@chefjarvis.com"
               className="link-quiet mt-4 inline-block font-serif text-2xl font-light text-ink"
             >
-              hello@cheftristan.com
+              hello@chefjarvis.com
             </a>
           </div>
 
