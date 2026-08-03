@@ -6,7 +6,7 @@ import { RECIPES } from "@/lib/recipes";
 export const metadata: Metadata = {
   title: "Recipes",
   description:
-    "Browse scratch-made recipes from Chef Tristan — quick weeknight meals, family-style dinners, comfort food, and dinner-party favourites.",
+    "Browse scratch-made recipes from Chef Jarvis — quick weeknight meals, family-style dinners, comfort food, and dinner-party favourites.",
 };
 
 export default function RecipesPage() {

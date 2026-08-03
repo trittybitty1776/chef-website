@@ -24,7 +24,7 @@ export default function Footer() {
       <div className="relative mx-auto max-w-[88rem] px-6 py-20 lg:px-10 lg:py-24">
         <div className="grid gap-16 lg:grid-cols-[1.4fr_0.8fr_1.2fr]">
           <div>
-            <p className="font-serif text-3xl font-light tracking-[0.02em]">Chef Tristan</p>
+            <p className="font-serif text-3xl font-light tracking-[0.02em]">Chef Jarvis</p>
             <p className="eyebrow mt-3 text-brass-light">Private Kitchen &middot; Est. 2015</p>
             <p className="mt-8 max-w-sm text-sm leading-loose text-bone/55">
               Restaurant-trained cooking for private tables — a weekly menu built around one
@@ -60,7 +60,7 @@ export default function Footer() {
 
         <div className="mt-20 flex flex-col gap-6 border-t border-bone/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[0.7rem] uppercase tracking-[0.18em] text-bone/35">
-            &copy; {new Date().getFullYear()} Chef Tristan
+            &copy; {new Date().getFullYear()} Chef Jarvis
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
             {SOCIAL_LINKS.map((social) => (

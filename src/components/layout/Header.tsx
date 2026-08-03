@@ -50,7 +50,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 py-5 lg:px-10">
         <Link href="/" onClick={closeMenu} className={`flex flex-col leading-none ${textColor}`}>
           <span className="font-serif text-[1.6rem] font-light tracking-[0.02em]">
-            Chef Tristan
+            Chef Jarvis
           </span>
           <span
             className={`eyebrow mt-1.5 text-[0.6rem] ${

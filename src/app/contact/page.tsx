@@ -5,13 +5,13 @@ import SectionHeading from "@/components/ui/SectionHeading";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch about meal-prep services, private dinners, events, or recipe questions with Chef Tristan.",
+    "Get in touch about meal-prep services, private dinners, events, or recipe questions with Chef Jarvis.",
 };
 
 const SOCIAL_LINKS = [
   { label: "Instagram", handle: "@cheftristan", href: "https://instagram.com" },
-  { label: "Facebook", handle: "Chef Tristan", href: "https://facebook.com" },
-  { label: "Pinterest", handle: "Chef Tristan", href: "https://pinterest.com" },
+  { label: "Facebook", handle: "Chef Jarvis", href: "https://facebook.com" },
+  { label: "Pinterest", handle: "Chef Jarvis", href: "https://pinterest.com" },
 ];
 
 export default function ContactPage() {

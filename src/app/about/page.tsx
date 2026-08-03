@@ -7,7 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet Chef Tristan — a restaurant-trained chef bringing professional technique and scratch-made cooking to private tables and home kitchens.",
+    "Meet Chef Jarvis — a restaurant-trained chef bringing professional technique and scratch-made cooking to private tables and home kitchens.",
 };
 
 const PHILOSOPHY_POINTS = [
@@ -53,7 +53,7 @@ export default function AboutPage() {
           <Reveal delay={150}>
             <Media
               tone="walnut"
-              label="Chef Tristan in the kitchen"
+              label="Chef Jarvis in the kitchen"
               src="/images/food/hero-chef.webp"
               sizes="(min-width: 1024px) 45vw, 100vw"
               priority

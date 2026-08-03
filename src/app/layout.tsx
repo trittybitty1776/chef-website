@@ -21,13 +21,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://trittybitty1776.github.io/chef-website"),
   title: {
-    default: "Chef Tristan | Private Chef & Weekly Meal Prep",
-    template: "%s | Chef Tristan",
+    default: "Chef Jarvis | Private Chef & Weekly Meal Prep",
+    template: "%s | Chef Jarvis",
   },
   description:
     "Restaurant-trained cooking for private tables. Scratch-made recipes, weekly meal prep, and in-home dinners from a chef with over a decade in professional kitchens.",
   openGraph: {
-    title: "Chef Tristan | Private Chef & Weekly Meal Prep",
+    title: "Chef Jarvis | Private Chef & Weekly Meal Prep",
     description:
       "Restaurant-trained cooking for private tables. Scratch-made recipes, weekly meal prep, and in-home dinners.",
     type: "website",

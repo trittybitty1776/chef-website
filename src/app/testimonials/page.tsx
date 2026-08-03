@@ -8,7 +8,7 @@ import { TESTIMONIALS } from "@/lib/testimonials";
 export const metadata: Metadata = {
   title: "Testimonials",
   description:
-    "What meal-prep clients and recipe followers say about cooking with Chef Tristan.",
+    "What meal-prep clients and recipe followers say about cooking with Chef Jarvis.",
 };
 
 export default function TestimonialsPage() {

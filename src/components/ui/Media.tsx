@@ -69,7 +69,7 @@ export default function Media({
       aria-label={label}
       className={`img-frame grain flex items-center justify-center bg-gradient-to-br ${TONE_GRADIENTS[tone]} ${className}`}
     >
-      <span className={`eyebrow relative ${TONE_TEXT[tone]}`}>Chef Tristan</span>
+      <span className={`eyebrow relative ${TONE_TEXT[tone]}`}>Chef Jarvis</span>
     </div>
   );
 }

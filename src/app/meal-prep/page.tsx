@@ -7,7 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 export const metadata: Metadata = {
   title: "Meal Prep Services",
   description:
-    "Private meal-prep packages from Chef Tristan — restaurant-quality meals portioned, labelled, and waiting in your fridge each week.",
+    "Private meal-prep packages from Chef Jarvis — restaurant-quality meals portioned, labelled, and waiting in your fridge each week.",
 };
 
 const HOW_IT_WORKS = [

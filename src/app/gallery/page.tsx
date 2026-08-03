@@ -6,7 +6,7 @@ import type { ImageTone } from "@/lib/recipes";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "A look at plated dishes, prepared weeks, and kitchen moments from Chef Tristan.",
+  description: "A look at plated dishes, prepared weeks, and kitchen moments from Chef Jarvis.",
 };
 
 type GalleryItem = {

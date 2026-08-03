@@ -24,7 +24,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Alicia R.",
     context: "Dinner party catering",
     quote:
-      "Booked Tristan for an eight-person dinner party and it felt like a private restaurant opening in my kitchen. Every course landed.",
+      "Booked Jarvis for an eight-person dinner party and it felt like a private restaurant opening in my kitchen. Every course landed.",
     rating: 5,
   },
   {
@@ -45,7 +45,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "The Osei Family",
     context: "Monthly meal-prep client, 1 year",
     quote:
-      "A full year in and the food still doesn't feel repetitive. Tristan rotates the menu with the seasons and always checks in first.",
+      "A full year in and the food still doesn't feel repetitive. Jarvis rotates the menu with the seasons and always checks in first.",
     rating: 5,
   },
 ];

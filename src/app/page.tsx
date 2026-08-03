@@ -53,7 +53,7 @@ export default function Home() {
         <div className="absolute inset-0">
           <Media
             tone="walnut"
-            label="A dish plated by Chef Tristan"
+            label="A dish plated by Chef Jarvis"
             src="/images/food/hero-chef.webp"
             sizes="100vw"
             priority
