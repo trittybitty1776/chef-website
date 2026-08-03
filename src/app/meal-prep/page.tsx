@@ -102,7 +102,7 @@ export default function MealPrepPage() {
             <Media
               tone="sage"
               label="A week of prepared meals ready in the fridge"
-              src="/images/food/meal-prep-containers.jpg"
+              src="/images/food/meal-prep-containers.webp"
               sizes="(min-width: 1024px) 45vw, 100vw"
               priority
               className="aspect-[4/5] w-full"

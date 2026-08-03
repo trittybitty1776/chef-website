@@ -54,7 +54,7 @@ export default function AboutPage() {
             <Media
               tone="walnut"
               label="Chef Tristan in the kitchen"
-              src="/images/food/hero-chef.jpg"
+              src="/images/food/hero-chef.webp"
               sizes="(min-width: 1024px) 45vw, 100vw"
               priority
               className="aspect-[4/5] w-full"

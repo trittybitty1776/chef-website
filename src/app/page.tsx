@@ -54,7 +54,7 @@ export default function Home() {
           <Media
             tone="walnut"
             label="A dish plated by Chef Tristan"
-            src="/images/food/hero-chef.jpg"
+            src="/images/food/hero-chef.webp"
             sizes="100vw"
             priority
             scrim="strong"
@@ -222,7 +222,7 @@ export default function Home() {
             <Media
               tone="cream-dark"
               label="A week of prepared meals, portioned and labelled"
-              src="/images/food/meal-prep-containers.jpg"
+              src="/images/food/meal-prep-containers.webp"
               sizes="(min-width: 1024px) 45vw, 100vw"
               className="aspect-[4/5] w-full"
             />
