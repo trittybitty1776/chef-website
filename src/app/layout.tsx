@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, Caveat } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -17,24 +18,18 @@ const inter = Inter({
   display: "swap",
 });
 
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://trittybitty1776.github.io/chef-website"),
   title: {
-    default: "Chef Tristan | Personal Chef & Meal Prep",
+    default: "Chef Tristan | Private Chef & Weekly Meal Prep",
     template: "%s | Chef Tristan",
   },
   description:
-    "Former Earls Kitchen & Bar chef sharing scratch-made recipes and offering private meal-prep services. Real food, cooked with care.",
+    "Restaurant-trained cooking for private tables. Scratch-made recipes, weekly meal prep, and in-home dinners from a chef with over a decade in professional kitchens.",
   openGraph: {
-    title: "Chef Tristan | Personal Chef & Meal Prep",
+    title: "Chef Tristan | Private Chef & Weekly Meal Prep",
     description:
-      "Former Earls Kitchen & Bar chef sharing scratch-made recipes and offering private meal-prep services.",
+      "Restaurant-trained cooking for private tables. Scratch-made recipes, weekly meal prep, and in-home dinners.",
     type: "website",
   },
 };
@@ -47,9 +42,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${caveat.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-cream text-walnut font-sans">
+      <body className="flex min-h-full flex-col bg-bone font-sans text-ink">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

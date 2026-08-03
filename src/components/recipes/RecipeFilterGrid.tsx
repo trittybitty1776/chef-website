@@ -15,11 +15,21 @@ type Props = {
 };
 
 type CategoryFilter = RecipeCategory | "All";
+type DietaryFilter = DietaryTag | "All";
+
+const FILTER_BASE =
+  "border-b pb-1 text-[0.68rem] uppercase tracking-[0.2em] transition-colors duration-300";
+
+function filterClass(isActive: boolean): string {
+  return `${FILTER_BASE} ${
+    isActive ? "border-brass text-ink" : "border-transparent text-stone-light hover:text-ink"
+  }`;
+}
 
 export default function RecipeFilterGrid({ recipes }: Props) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<CategoryFilter>("All");
-  const [dietaryTag, setDietaryTag] = useState<DietaryTag | "All">("All");
+  const [dietaryTag, setDietaryTag] = useState<DietaryFilter>("All");
 
   const filteredRecipes = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -36,62 +46,80 @@ export default function RecipeFilterGrid({ recipes }: Props) {
 
   return (
     <div>
-      <div className="flex flex-col gap-4 rounded-2xl border border-walnut/10 bg-white/60 p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-        <label className="relative flex-1">
+      <div className="border-y border-ink/10 py-8">
+        <label className="block">
           <span className="sr-only">Search recipes</span>
           <input
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search recipes..."
-            className="w-full rounded-full border border-walnut/20 bg-cream px-5 py-2.5 text-sm text-walnut placeholder:text-walnut/40 outline-none focus:ring-2 focus:ring-terracotta"
+            placeholder="Search the archive"
+            className="w-full border-b border-ink/15 bg-transparent pb-4 font-serif text-2xl font-light text-ink outline-none transition-colors placeholder:text-stone-light/60 focus:border-brass focus-visible:outline-none sm:text-3xl"
           />
         </label>
 
-        <div className="flex flex-wrap gap-2">
-          <select
-            value={category}
-            onChange={(event) => setCategory(event.target.value as CategoryFilter)}
-            className="rounded-full border border-walnut/20 bg-cream px-4 py-2.5 text-sm text-walnut outline-none focus:ring-2 focus:ring-terracotta"
-            aria-label="Filter by category"
-          >
-            <option value="All">All categories</option>
+        <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
+            <span className="eyebrow text-[0.6rem] text-stone-light/70">Course</span>
+            <button
+              type="button"
+              onClick={() => setCategory("All")}
+              className={filterClass(category === "All")}
+            >
+              All
+            </button>
             {RECIPE_CATEGORIES.map((option) => (
-              <option key={option} value={option}>
+              <button
+                key={option}
+                type="button"
+                onClick={() => setCategory(option)}
+                className={filterClass(category === option)}
+              >
                 {option}
-              </option>
+              </button>
             ))}
-          </select>
+          </div>
 
-          <select
-            value={dietaryTag}
-            onChange={(event) => setDietaryTag(event.target.value as DietaryTag | "All")}
-            className="rounded-full border border-walnut/20 bg-cream px-4 py-2.5 text-sm text-walnut outline-none focus:ring-2 focus:ring-terracotta"
-            aria-label="Filter by dietary tag"
-          >
-            <option value="All">All dietary tags</option>
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
+            <span className="eyebrow text-[0.6rem] text-stone-light/70">Dietary</span>
+            <button
+              type="button"
+              onClick={() => setDietaryTag("All")}
+              className={filterClass(dietaryTag === "All")}
+            >
+              All
+            </button>
             {DIETARY_TAGS.map((option) => (
-              <option key={option} value={option}>
+              <button
+                key={option}
+                type="button"
+                onClick={() => setDietaryTag(option)}
+                className={filterClass(dietaryTag === option)}
+              >
                 {option}
-              </option>
+              </button>
             ))}
-          </select>
+          </div>
         </div>
       </div>
 
-      <p className="mt-4 text-sm text-walnut-light">
-        {filteredRecipes.length} {filteredRecipes.length === 1 ? "recipe" : "recipes"} found
+      <p className="mt-8 text-[0.68rem] uppercase tracking-[0.2em] text-stone-light">
+        {String(filteredRecipes.length).padStart(2, "0")}{" "}
+        {filteredRecipes.length === 1 ? "recipe" : "recipes"}
       </p>
 
       {filteredRecipes.length > 0 ? (
-        <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
           {filteredRecipes.map((recipe) => (
             <RecipeCard key={recipe.slug} recipe={recipe} />
           ))}
         </div>
       ) : (
-        <div className="mt-12 rounded-2xl border border-dashed border-walnut/20 py-16 text-center text-walnut-light">
-          No recipes match your search. Try a different filter.
+        <div className="mt-16 border-t border-ink/10 py-24 text-center">
+          <p className="font-serif text-2xl font-light italic text-stone">
+            Nothing on the pass matches that.
+          </p>
+          <p className="mt-3 text-sm text-stone-light">Try a different course or dietary filter.</p>
         </div>
       )}
     </div>

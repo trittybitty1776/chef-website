@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Button from "@/components/ui/Button";
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import { TESTIMONIALS } from "@/lib/testimonials";
 
@@ -11,32 +13,49 @@ export const metadata: Metadata = {
 
 export default function TestimonialsPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-      <div className="text-center">
-        <p className="font-script text-2xl text-terracotta">kind words</p>
-        <h1 className="mt-2 font-serif text-4xl font-semibold text-walnut sm:text-5xl">
-          Testimonials
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-walnut-light">
-          A few notes from meal-prep clients and home cooks who&apos;ve tried the recipes.
-        </p>
-      </div>
+    <>
+      <section className="mx-auto max-w-[88rem] px-6 pb-24 pt-36 lg:px-10 lg:pb-32 lg:pt-48">
+        <div className="animate-rise">
+          <SectionHeading
+            as="h1"
+            align="center"
+            eyebrow="Kind Words"
+            title="From the table"
+            description="A few notes from meal-prep clients and home cooks who have made the recipes their own."
+          />
+        </div>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {TESTIMONIALS.map((testimonial) => (
-          <TestimonialCard key={testimonial.name} testimonial={testimonial} />
-        ))}
-      </div>
+        <div className="mt-20 grid gap-x-16 gap-y-16 border-t border-ink/10 pt-16 sm:grid-cols-2 lg:grid-cols-3">
+          {TESTIMONIALS.map((testimonial, index) => (
+            <Reveal key={testimonial.name} delay={(index % 3) * 120}>
+              <TestimonialCard testimonial={testimonial} />
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
-      <div className="mt-16 rounded-2xl bg-walnut px-6 py-10 text-center text-cream">
-        <p className="font-serif text-2xl font-semibold">Ready to become our next client?</p>
-        <Link
-          href="/meal-prep"
-          className="mt-5 inline-block rounded-full bg-terracotta px-7 py-3 text-sm font-semibold text-cream transition-colors hover:bg-terracotta-dark"
-        >
-          Explore Meal Prep Services
-        </Link>
-      </div>
-    </div>
+      <section className="relative overflow-hidden bg-ink text-bone">
+        <div className="grain absolute inset-0" aria-hidden="true" />
+        <div className="relative mx-auto max-w-[88rem] px-6 py-24 text-center lg:px-10 lg:py-32">
+          <Reveal>
+            <SectionHeading
+              tone="light"
+              align="center"
+              eyebrow="Join Them"
+              title="A seat opens up now and then."
+              description="The weekly roster is deliberately small. Tell me about your household and I'll let you know what's available."
+            />
+            <div className="mt-12 flex flex-col justify-center gap-4 sm:flex-row">
+              <Button href="/meal-prep" variant="light">
+                Meal Prep Packages
+              </Button>
+              <Button href="/contact" variant="ghost">
+                Enquire
+              </Button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
   );
 }

@@ -2,26 +2,44 @@ import type { Testimonial } from "@/lib/testimonials";
 
 type Props = {
   testimonial: Testimonial;
+  tone?: "dark" | "light";
 };
 
-export default function TestimonialCard({ testimonial }: Props) {
+export default function TestimonialCard({ testimonial, tone = "dark" }: Props) {
+  const isLight = tone === "light";
+
   return (
-    <figure className="flex h-full flex-col justify-between rounded-2xl border border-walnut/10 bg-white/70 p-6 shadow-sm">
-      <div>
-        <div className="flex gap-0.5 text-terracotta" aria-label={`${testimonial.rating} out of 5 stars`}>
-          {Array.from({ length: testimonial.rating }).map((_, index) => (
-            <span key={index} aria-hidden="true">
-              ★
-            </span>
-          ))}
-        </div>
-        <blockquote className="mt-4 font-serif text-lg leading-relaxed text-walnut">
-          &ldquo;{testimonial.quote}&rdquo;
-        </blockquote>
+    <figure className="flex h-full flex-col">
+      <div
+        className={`flex gap-1.5 text-[0.7rem] tracking-[0.3em] ${
+          isLight ? "text-brass-light" : "text-brass"
+        }`}
+        aria-label={`${testimonial.rating} out of 5 stars`}
+      >
+        {Array.from({ length: testimonial.rating }).map((_, index) => (
+          <span key={index} aria-hidden="true">
+            &#9670;
+          </span>
+        ))}
       </div>
-      <figcaption className="mt-6 text-sm">
-        <span className="block font-semibold text-walnut">{testimonial.name}</span>
-        <span className="text-walnut-light">{testimonial.context}</span>
+
+      <blockquote
+        className={`mt-7 flex-1 font-serif text-2xl font-light italic leading-[1.5] ${
+          isLight ? "text-bone/90" : "text-ink"
+        }`}
+      >
+        &ldquo;{testimonial.quote}&rdquo;
+      </blockquote>
+
+      <figcaption
+        className={`mt-8 border-t pt-5 ${isLight ? "border-bone/15" : "border-ink/10"}`}
+      >
+        <span className={`eyebrow block text-[0.62rem] ${isLight ? "text-bone" : "text-ink"}`}>
+          {testimonial.name}
+        </span>
+        <span className={`mt-2 block text-xs ${isLight ? "text-bone/45" : "text-stone-light"}`}>
+          {testimonial.context}
+        </span>
       </figcaption>
     </figure>
   );

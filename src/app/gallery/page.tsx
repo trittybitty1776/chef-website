@@ -1,95 +1,118 @@
 import type { Metadata } from "next";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import Media from "@/components/ui/Media";
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 import type { ImageTone } from "@/lib/recipes";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "A look at plated dishes, meal-prep spreads, and kitchen moments from Chef Tristan.",
+  description: "A look at plated dishes, prepared weeks, and kitchen moments from Chef Tristan.",
 };
 
-const GALLERY_ITEMS: { label: string; tone: ImageTone; icon: string; imageSrc: string; span?: string }[] = [
+type GalleryItem = {
+  label: string;
+  tone: ImageTone;
+  imageSrc: string;
+  /** Column span within the 6-column editorial grid. */
+  span: string;
+  ratio: string;
+};
+
+const GALLERY_ITEMS: GalleryItem[] = [
   {
     label: "Seared salmon with brown butter glaze",
     tone: "terracotta",
-    icon: "🐟",
     imageSrc: "/images/food/gallery-1.jpg",
-    span: "sm:row-span-2",
+    span: "lg:col-span-4",
+    ratio: "aspect-[4/3]",
   },
   {
     label: "Sunday short ribs over polenta",
     tone: "walnut",
-    icon: "🍖",
     imageSrc: "/images/food/gallery-2.jpg",
+    span: "lg:col-span-2",
+    ratio: "aspect-[3/4]",
   },
   {
     label: "Heirloom tomato and burrata salad",
     tone: "sage",
-    icon: "🍅",
     imageSrc: "/images/food/gallery-3.jpg",
+    span: "lg:col-span-2",
+    ratio: "aspect-[3/4]",
   },
   {
-    label: "Weekly meal-prep containers",
+    label: "A week of prepared meals",
     tone: "cream-dark",
-    icon: "🥡",
     imageSrc: "/images/food/gallery-4.jpg",
+    span: "lg:col-span-4",
+    ratio: "aspect-[4/3]",
   },
   {
     label: "Wild mushroom risotto, table-side",
     tone: "walnut",
-    icon: "🍄",
     imageSrc: "/images/food/gallery-5.jpg",
-    span: "sm:row-span-2",
+    span: "lg:col-span-3",
+    ratio: "aspect-[4/3]",
   },
   {
     label: "Charred corn tacos, fresh off the pan",
     tone: "sage",
-    icon: "🌽",
     imageSrc: "/images/food/gallery-6.jpg",
+    span: "lg:col-span-3",
+    ratio: "aspect-[4/3]",
   },
   {
     label: "Dinner party plating in progress",
     tone: "terracotta",
-    icon: "🍽",
     imageSrc: "/images/food/gallery-7.jpg",
+    span: "lg:col-span-2",
+    ratio: "aspect-[3/4]",
   },
   {
     label: "Herb-crusted chicken, resting",
     tone: "cream-dark",
-    icon: "🌿",
     imageSrc: "/images/food/gallery-8.jpg",
+    span: "lg:col-span-2",
+    ratio: "aspect-[3/4]",
   },
   {
-    label: "Kitchen prep, mise en place",
+    label: "Mise en place",
     tone: "walnut",
-    icon: "🔪",
     imageSrc: "/images/food/gallery-9.jpg",
+    span: "lg:col-span-2",
+    ratio: "aspect-[3/4]",
   },
 ];
 
 export default function GalleryPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-      <div className="text-center">
-        <p className="font-script text-2xl text-terracotta">from the pass</p>
-        <h1 className="mt-2 font-serif text-4xl font-semibold text-walnut sm:text-5xl">
-          Gallery
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-walnut-light">
-          A look at plated dishes, meal-prep spreads, and kitchen moments. Full photography
-          coming soon — follow along on Instagram for the latest.
-        </p>
+    <div className="mx-auto max-w-[88rem] px-6 pb-24 pt-36 lg:px-10 lg:pb-32 lg:pt-48">
+      <div className="animate-rise">
+        <SectionHeading
+          as="h1"
+          align="center"
+          eyebrow="From the Pass"
+          title="Gallery"
+          description="Plated dishes, prepared weeks, and quiet moments between services."
+        />
       </div>
 
-      <div className="mt-12 grid auto-rows-[180px] gap-4 sm:grid-cols-3">
-        {GALLERY_ITEMS.map((item) => (
-          <PlaceholderImage
-            key={item.label}
-            tone={item.tone}
-            label={item.label}
-            icon={item.icon}
-            src={item.imageSrc}
-            className={`h-full w-full rounded-2xl ${item.span ?? ""}`}
-          />
+      <div className="mt-20 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-6">
+        {GALLERY_ITEMS.map((item, index) => (
+          <Reveal key={item.label} delay={(index % 3) * 120} className={`group ${item.span}`}>
+            <figure>
+              <Media
+                tone={item.tone}
+                label={item.label}
+                src={item.imageSrc}
+                sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 100vw"
+                className={`w-full ${item.ratio}`}
+              />
+              <figcaption className="mt-4 text-[0.65rem] uppercase tracking-[0.2em] text-stone-light">
+                {item.label}
+              </figcaption>
+            </figure>
+          </Reveal>
         ))}
       </div>
     </div>

@@ -1,29 +1,19 @@
-import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto flex max-w-2xl flex-col items-center px-4 py-24 text-center sm:px-6 lg:px-8">
-      <p className="font-script text-3xl text-terracotta">oops, order&apos;s not up</p>
-      <h1 className="mt-2 font-serif text-4xl font-semibold text-walnut sm:text-5xl">
-        Page Not Found
-      </h1>
-      <p className="mt-4 text-walnut-light">
-        The page you&apos;re looking for isn&apos;t on the menu. Let&apos;s get you back to
-        something delicious.
+    <div className="mx-auto flex min-h-[70vh] max-w-2xl flex-col items-center justify-center px-6 py-32 text-center">
+      <span className="numeral text-7xl text-brass">404</span>
+      <h1 className="display mt-8 text-4xl text-ink sm:text-5xl">Not on the menu</h1>
+      <p className="lede mt-6 max-w-md text-stone">
+        The page you were looking for isn&apos;t here. Let&apos;s get you back to something worth
+        eating.
       </p>
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <Link
-          href="/"
-          className="rounded-full bg-terracotta px-7 py-3 text-sm font-semibold text-cream transition-colors hover:bg-terracotta-dark"
-        >
-          Back to Home
-        </Link>
-        <Link
-          href="/recipes"
-          className="rounded-full border border-walnut/20 px-7 py-3 text-sm font-semibold text-walnut transition-colors hover:border-walnut/40 hover:bg-walnut/5"
-        >
-          Browse Recipes
-        </Link>
+      <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+        <Button href="/">Back to Home</Button>
+        <Button href="/recipes" variant="outline">
+          The Recipe Archive
+        </Button>
       </div>
     </div>
   );

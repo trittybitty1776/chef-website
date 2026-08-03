@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -15,30 +15,61 @@ const NAV_LINKS: NavLink[] = [
   { href: "/about", label: "About" },
   { href: "/gallery", label: "Gallery" },
   { href: "/testimonials", label: "Testimonials" },
-  { href: "/contact", label: "Contact" },
 ];
+
+/** Scroll distance after which the bar leaves its transparent state. */
+const SOLID_AFTER_PX = 24;
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
+  const isHome = pathname === "/";
+  // Only the home page has a full-bleed dark hero for the bar to float over.
+  const isOverlaid = isHome && !isScrolled && !isMenuOpen;
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > SOLID_AFTER_PX);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const textColor = isOverlaid ? "text-bone" : "text-ink";
+  const barColor = isOverlaid
+    ? "bg-transparent border-transparent"
+    : "bg-bone/90 border-ink/10 backdrop-blur-md";
+
   return (
-    <header className="sticky top-0 z-50 border-b border-walnut/10 bg-cream/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-baseline gap-2" onClick={() => setIsMenuOpen(false)}>
-          <span className="font-serif text-2xl font-semibold text-terracotta">Chef Tristan</span>
-          <span className="font-script hidden text-lg text-sage-dark sm:inline">home kitchen</span>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-700 ${barColor}`}
+    >
+      <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 py-5 lg:px-10">
+        <Link href="/" onClick={closeMenu} className={`flex flex-col leading-none ${textColor}`}>
+          <span className="font-serif text-[1.6rem] font-light tracking-[0.02em]">
+            Chef Tristan
+          </span>
+          <span
+            className={`eyebrow mt-1.5 text-[0.6rem] ${
+              isOverlaid ? "text-bone/60" : "text-brass-dark"
+            }`}
+          >
+            Private Kitchen
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-9 lg:flex">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium tracking-wide transition-colors hover:text-terracotta ${
-                  isActive ? "text-terracotta" : "text-walnut"
+                className={`eyebrow link-quiet text-[0.65rem] transition-opacity duration-300 ${textColor} ${
+                  isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
                 }`}
               >
                 {link.label}
@@ -47,48 +78,57 @@ export default function Header() {
           })}
         </nav>
 
-        <Link
-          href="/meal-prep"
-          className="hidden rounded-full bg-terracotta px-5 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-terracotta-dark md:inline-block"
-        >
-          Book Meal Prep
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/contact"
+            className={`hidden border px-6 py-3 text-[0.65rem] font-medium uppercase tracking-[0.22em] transition-all duration-500 lg:inline-block ${
+              isOverlaid
+                ? "border-bone/40 text-bone hover:bg-bone hover:text-ink"
+                : "border-ink/25 text-ink hover:bg-ink hover:text-bone"
+            }`}
+          >
+            Enquire
+          </Link>
 
-        <button
-          type="button"
-          className="flex flex-col gap-1.5 p-2 md:hidden"
-          aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
-          onClick={() => setIsMenuOpen((open) => !open)}
-        >
-          <span
-            className={`h-0.5 w-6 bg-walnut transition-transform ${isMenuOpen ? "translate-y-2 rotate-45" : ""}`}
-          />
-          <span className={`h-0.5 w-6 bg-walnut transition-opacity ${isMenuOpen ? "opacity-0" : ""}`} />
-          <span
-            className={`h-0.5 w-6 bg-walnut transition-transform ${isMenuOpen ? "-translate-y-2 -rotate-45" : ""}`}
-          />
-        </button>
+          <button
+            type="button"
+            className={`flex h-10 w-10 flex-col items-center justify-center gap-[5px] lg:hidden ${textColor}`}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
+          >
+            <span
+              className={`h-px w-6 bg-current transition-transform duration-300 ${
+                isMenuOpen ? "translate-y-[3px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-px w-6 bg-current transition-transform duration-300 ${
+                isMenuOpen ? "-translate-y-[3px] -rotate-45" : ""
+              }`}
+            />
+          </button>
+        </div>
       </div>
 
       {isMenuOpen && (
-        <nav className="flex flex-col gap-1 border-t border-walnut/10 bg-cream px-4 pb-4 md:hidden">
+        <nav className="border-t border-ink/10 bg-bone px-6 pb-8 pt-2 lg:hidden">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-md px-2 py-3 text-base font-medium text-walnut hover:bg-cream-dark hover:text-terracotta"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
+              className="block border-b border-ink/5 py-4 font-serif text-2xl font-light text-ink"
             >
               {link.label}
             </Link>
           ))}
           <Link
-            href="/meal-prep"
-            className="mt-2 rounded-full bg-terracotta px-5 py-3 text-center text-sm font-semibold text-cream"
-            onClick={() => setIsMenuOpen(false)}
+            href="/contact"
+            onClick={closeMenu}
+            className="mt-6 block bg-ink px-6 py-4 text-center text-[0.65rem] font-medium uppercase tracking-[0.22em] text-bone"
           >
-            Book Meal Prep
+            Enquire
           </Link>
         </nav>
       )}

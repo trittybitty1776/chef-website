@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import Media from "@/components/ui/Media";
+import Button from "@/components/ui/Button";
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { RECIPES, getRecipeBySlug } from "@/lib/recipes";
 
 type PageParams = {
@@ -42,105 +45,123 @@ export default async function RecipeDetailPage({
     notFound();
   }
 
-  return (
-    <article className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-      <Link href="/recipes" className="text-sm font-semibold text-terracotta hover:text-terracotta-dark">
-        ← Back to recipes
-      </Link>
+  const facts = [
+    { label: "Prep", value: `${recipe.prepTimeMinutes}`, unit: "min" },
+    { label: "Cook", value: `${recipe.cookTimeMinutes}`, unit: "min" },
+    { label: "Serves", value: `${recipe.servings}`, unit: "" },
+    { label: "Course", value: recipe.category, unit: "" },
+  ];
 
-      <div className="mt-6 flex flex-wrap items-center gap-2">
-        <span className="rounded-full bg-sage/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sage-dark">
-          {recipe.category}
-        </span>
-        {recipe.dietaryTags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full bg-terracotta/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-terracotta-dark"
-          >
-            {tag}
-          </span>
-        ))}
+  return (
+    <article>
+      <div className="mx-auto max-w-[88rem] px-6 pt-32 lg:px-10 lg:pt-40">
+        <Link
+          href="/recipes"
+          className="link-quiet eyebrow text-[0.62rem] text-stone-light hover:text-ink"
+        >
+          &larr; The Archive
+        </Link>
       </div>
 
-      <h1 className="mt-4 font-serif text-4xl font-semibold leading-tight text-walnut sm:text-5xl">
-        {recipe.title}
-      </h1>
-      <p className="mt-4 max-w-2xl text-lg text-walnut-light">{recipe.description}</p>
+      <header className="mx-auto max-w-[88rem] px-6 pb-14 pt-10 lg:px-10 lg:pb-20">
+        <div className="animate-rise max-w-4xl">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.62rem] uppercase tracking-[0.24em] text-brass-dark">
+            <span>{recipe.category}</span>
+            {recipe.dietaryTags.map((tag) => (
+              <span key={tag} className="flex items-center gap-5 text-stone-light">
+                <span className="h-px w-4 bg-stone-light/40" />
+                {tag}
+              </span>
+            ))}
+          </div>
 
-      <PlaceholderImage
+          <h1 className="display mt-7 text-[2.75rem] text-ink sm:text-6xl lg:text-[4.25rem]">
+            {recipe.title}
+          </h1>
+
+          <p className="lede mt-7 max-w-2xl text-stone">{recipe.description}</p>
+        </div>
+      </header>
+
+      <Media
         tone={recipe.imageTone}
         label={recipe.title}
         src={recipe.imageSrc}
-        className="mt-8 aspect-[16/9] w-full rounded-3xl shadow-lg"
+        sizes="100vw"
+        priority
+        className="aspect-[16/9] w-full lg:aspect-[21/9]"
       />
 
-      <dl className="mt-8 grid grid-cols-2 gap-6 rounded-2xl border border-walnut/10 bg-white/60 p-6 sm:grid-cols-4">
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wider text-sage-dark">Prep</dt>
-          <dd className="mt-1 font-serif text-xl font-semibold text-walnut">
-            {recipe.prepTimeMinutes} min
-          </dd>
-        </div>
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wider text-sage-dark">Cook</dt>
-          <dd className="mt-1 font-serif text-xl font-semibold text-walnut">
-            {recipe.cookTimeMinutes} min
-          </dd>
-        </div>
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wider text-sage-dark">
-            Servings
-          </dt>
-          <dd className="mt-1 font-serif text-xl font-semibold text-walnut">{recipe.servings}</dd>
-        </div>
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wider text-sage-dark">
-            Category
-          </dt>
-          <dd className="mt-1 font-serif text-xl font-semibold text-walnut">{recipe.category}</dd>
-        </div>
-      </dl>
+      <div className="mx-auto max-w-[88rem] px-6 lg:px-10">
+        <dl className="grid grid-cols-2 gap-8 border-b border-ink/10 py-12 sm:grid-cols-4">
+          {facts.map((fact) => (
+            <div key={fact.label}>
+              <dt className="eyebrow text-[0.6rem] text-stone-light">{fact.label}</dt>
+              <dd className="numeral mt-3 text-3xl text-ink">
+                {fact.value}
+                {fact.unit && (
+                  <span className="ml-2 text-sm tracking-[0.15em] text-stone-light">
+                    {fact.unit}
+                  </span>
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
 
-      <div className="mt-12 grid gap-12 sm:grid-cols-[1fr_1.5fr]">
-        <div>
-          <h2 className="font-serif text-2xl font-semibold text-walnut">Ingredients</h2>
-          <ul className="mt-4 space-y-2.5">
-            {recipe.ingredients.map((ingredient) => (
-              <li key={ingredient} className="flex items-start gap-2 text-walnut-light">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta" />
-                {ingredient}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <div className="grid gap-16 py-20 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
+          <Reveal>
+            <div className="lg:sticky lg:top-32">
+              <h2 className="eyebrow text-[0.62rem] text-brass-dark">Ingredients</h2>
+              <ul className="mt-8 space-y-4">
+                {recipe.ingredients.map((ingredient) => (
+                  <li
+                    key={ingredient}
+                    className="flex gap-4 border-b border-ink/10 pb-4 text-[0.95rem] leading-relaxed text-stone"
+                  >
+                    <span className="mt-2.5 h-px w-3 shrink-0 bg-brass" />
+                    {ingredient}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
 
-        <div>
-          <h2 className="font-serif text-2xl font-semibold text-walnut">Steps</h2>
-          <ol className="mt-4 space-y-5">
-            {recipe.steps.map((step, index) => (
-              <li key={step} className="flex gap-4">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-terracotta text-sm font-semibold text-cream">
-                  {index + 1}
-                </span>
-                <p className="text-walnut-light">{step}</p>
-              </li>
-            ))}
-          </ol>
+          <Reveal delay={120}>
+            <h2 className="eyebrow text-[0.62rem] text-brass-dark">Method</h2>
+            <ol className="mt-8 space-y-10">
+              {recipe.steps.map((step, index) => (
+                <li key={step} className="flex gap-6">
+                  <span className="numeral shrink-0 text-2xl text-brass">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-[1.0625rem] leading-[1.9] text-stone">{step}</p>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
         </div>
       </div>
 
-      <div className="mt-16 rounded-2xl bg-walnut px-6 py-8 text-center text-cream">
-        <p className="font-serif text-2xl font-semibold">Want meals like this without the prep?</p>
-        <p className="mt-2 text-cream/75">
-          Meal-prep clients get recipes like this one delivered ready to reheat.
-        </p>
-        <Link
-          href="/meal-prep"
-          className="mt-5 inline-block rounded-full bg-terracotta px-7 py-3 text-sm font-semibold text-cream transition-colors hover:bg-terracotta-dark"
-        >
-          Explore Meal Prep Services
-        </Link>
-      </div>
+      <section className="relative overflow-hidden bg-ink text-bone">
+        <div className="grain absolute inset-0" aria-hidden="true" />
+        <div className="relative mx-auto max-w-[88rem] px-6 py-24 text-center lg:px-10 lg:py-32">
+          <Reveal>
+            <SectionHeading
+              tone="light"
+              align="center"
+              eyebrow="Or Let Me Cook"
+              title="Want meals like this without the prep?"
+              description="Meal-prep clients get dishes like this one portioned, labelled, and ready to reheat."
+            />
+            <div className="mt-12 flex justify-center">
+              <Button href="/meal-prep" variant="light">
+                Meal Prep Packages
+              </Button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
     </article>
   );
 }

@@ -18,65 +18,65 @@ const SITE_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-walnut text-cream">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
+    <footer className="relative overflow-hidden bg-ink text-bone">
+      <div className="grain absolute inset-0" aria-hidden="true" />
+
+      <div className="relative mx-auto max-w-[88rem] px-6 py-20 lg:px-10 lg:py-24">
+        <div className="grid gap-16 lg:grid-cols-[1.4fr_0.8fr_1.2fr]">
           <div>
-            <p className="font-serif text-2xl font-semibold text-cream">Chef Tristan</p>
-            <p className="font-script mt-1 text-lg text-terracotta-light">
-              scratch-made, one plate at a time
-            </p>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/70">
-              Recipes and private meal-prep from a former Earls Kitchen &amp; Bar chef. Real
-              ingredients, honest technique, cooked for your table.
+            <p className="font-serif text-3xl font-light tracking-[0.02em]">Chef Tristan</p>
+            <p className="eyebrow mt-3 text-brass-light">Private Kitchen &middot; Est. 2015</p>
+            <p className="mt-8 max-w-sm text-sm leading-loose text-bone/55">
+              Restaurant-trained cooking for private tables — a weekly menu built around one
+              household at a time, and the recipes behind it.
             </p>
           </div>
 
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wider text-cream/60">
-              Explore
-            </p>
-            <ul className="mt-4 space-y-2">
+          <nav>
+            <p className="eyebrow text-bone/40">Explore</p>
+            <ul className="mt-6 space-y-3.5">
               {SITE_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-cream/80 hover:text-terracotta-light">
+                  <Link
+                    href={link.href}
+                    className="link-quiet font-serif text-lg font-light text-bone/80 transition-colors hover:text-brass-light"
+                  >
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wider text-cream/60">
-              Recipe drops
-            </p>
-            <p className="mt-4 text-sm text-cream/70">
-              New recipes and meal-prep openings, straight to your inbox.
+            <p className="eyebrow text-bone/40">The Menu Letter</p>
+            <p className="mt-6 max-w-sm text-sm leading-loose text-bone/55">
+              Seasonal recipes and meal-prep openings, sent when there is something worth
+              sending. No more than twice a month.
             </p>
             <NewsletterForm variant="dark" />
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-cream/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-cream/50">
-            &copy; {new Date().getFullYear()} Chef Tristan. All rights reserved.
+        <div className="mt-20 flex flex-col gap-6 border-t border-bone/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[0.7rem] uppercase tracking-[0.18em] text-bone/35">
+            &copy; {new Date().getFullYear()} Chef Tristan
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
             {SOCIAL_LINKS.map((social) => (
               <a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-medium uppercase tracking-wider text-cream/60 hover:text-terracotta-light"
+                className="text-[0.7rem] uppercase tracking-[0.18em] text-bone/50 transition-colors hover:text-brass-light"
               >
                 {social.label}
               </a>
             ))}
             <a
               href="mailto:hello@cheftristan.com"
-              className="text-xs font-medium uppercase tracking-wider text-cream/60 hover:text-terracotta-light"
+              className="text-[0.7rem] uppercase tracking-[0.18em] text-bone/50 transition-colors hover:text-brass-light"
             >
               hello@cheftristan.com
             </a>
